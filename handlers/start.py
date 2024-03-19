@@ -13,4 +13,5 @@ async def start(message: types.Message):
                             "/anime - аниме\n"
                             "/serials - сериалы\n"
                             "/help - для жалобы либо для связи с нами\n"
-                            "/survey - для прохождения опроса")
+                            "/survey - для прохождения опроса\n"
+                            "/order_book - для заказа книги")

@@ -41,6 +41,12 @@ async def survey(message: types.Message, state: FSMContext):
 @survey_router.message(Survey.age)
 async def survey(message: types.Message, state: FSMContext):
     age = message.text
+    if not age.isdigit():
+        await message.answer("Invalid!")
+        return
+    elif int(age) < 10 or int(age) > 110:
+        await message.answer("Invalid!")
+        return
     await state.set_state(Survey.gender)
     await message.answer("Какой ваш пол?", reply_markup=survey_gender_kb())
 
@@ -49,6 +55,9 @@ async def survey(message: types.Message, state: FSMContext):
 async def survey(message: types.Message, state: FSMContext):
     kb = types.ReplyKeyboardRemove()
     gender = message.text
+    if gender != "Мужской" and gender != "Женский":
+        await message.answer("Invalid gender!")
+        return
     await state.set_state(Survey.job_title)
     await message.answer("Какая у вас работа?", reply_markup=kb)
 
@@ -64,6 +73,9 @@ async def survey(message: types.Message, state: FSMContext):
 async def survey(message: types.Message, state: FSMContext):
     kb = types.ReplyKeyboardRemove()
     fav_genre = message.text
+    if fav_genre not in ["Документальные", "Фантастика", "Боевики", "Хоррор", "Комедии"]:
+        await message.answer("invalid fav genre!")
+        return
     await state.set_state(Survey.fav_book)
     await message.answer("Ваша любимая книга?", reply_markup=kb)
 
@@ -86,6 +98,11 @@ async def survey(message: types.Message, state: FSMContext):
 async def survey(message: types.Message, state: FSMContext):
     kb = types.ReplyKeyboardRemove()
     education = message.text
+    if education not in ["Высшее III степени", "Высшее II степени", "Высшее I степени",
+                         "Среднее профессиональное", "Среднее общее", "Основное общее"
+                         "Начальное общее", "Дошкольное"]:
+        await message.answer("invalid education!")
+        return
     await state.set_state(Survey.fav_autor)
     await message.answer("Ваш любимый автор?", reply_markup=kb)
 
