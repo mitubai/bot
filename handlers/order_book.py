@@ -53,8 +53,7 @@ db = Database()
 async def berserk(callback: types.CallbackQuery):
     first_book = db.get_berserk()
     info = f"Название: {first_book[1]}\nОписание: {first_book[2]}\nЦена: {first_book[3]}"
-    file_name = (Path(__file__).parent.parent / "images").iterdir()
-    file_path = Path(__file__).parent.parent / "images" / "berserk.jpg"
+    file_path = Path(__file__).parent.parent / "images" / first_book[4]
     file = types.FSInputFile(file_path)
     logging.info(file_path)
     await callback.message.answer_photo(file, caption=info, reply_markup=really_order_bers())
@@ -64,8 +63,7 @@ async def berserk(callback: types.CallbackQuery):
 async def urhome(callback: types.CallbackQuery):
     first_book = db.get_urhome()
     info = f"Название: {first_book[1]}\nОписание: {first_book[2]}\nЦена: {first_book[3]}"
-    file_name = (Path(__file__).parent.parent / "images").iterdir()
-    file_path = Path(__file__).parent.parent / "images" / "youarehome.jpg"
+    file_path = Path(__file__).parent.parent / "images" / first_book[4]
     file = types.FSInputFile(file_path)
     logging.info(file_path)
     await callback.message.answer_photo(file, caption=info, reply_markup=really_order_home())
@@ -75,8 +73,7 @@ async def urhome(callback: types.CallbackQuery):
 async def riders(callback: types.CallbackQuery):
     first_book = db.get_riders()
     info = f"Название: {first_book[1]}\nОписание: {first_book[2]}\nЦена: {first_book[3]}"
-    file_name = (Path(__file__).parent.parent / "images").iterdir()
-    file_path = Path(__file__).parent.parent / "images" / "easyriders.jpg"
+    file_path = Path(__file__).parent.parent / first_book[4]
     file = types.FSInputFile(file_path)
     logging.info(file_path)
     await callback.message.answer_photo(file, caption=info, reply_markup=really_order_riders())
@@ -86,10 +83,7 @@ async def riders(callback: types.CallbackQuery):
 async def comeget(callback: types.CallbackQuery,):
     first_book = db.get_comeget()
     info = f"Название: {first_book[1]}\nОписание: {first_book[2]}\nЦена: {first_book[3]}"
-    file_name = (Path(__file__).parent.parent / "images").iterdir()
-    file_path = Path(__file__).parent.parent / "images" / "comeget.jpg"
+    file_path = Path(__file__).parent.parent / "images" / first_book[4]
     file = types.FSInputFile(file_path)
     logging.info(file_path)
     await callback.message.answer_photo(file, caption=info, reply_markup=really_order_come())
-
-
