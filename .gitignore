@@ -8,9 +8,7 @@ __pycache__/
 *$py.class
 
 # C extensions
-*.so
-db
-images
+*.sogit
 database.sqlite
 
 # Distribution / packaging
